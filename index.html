@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Mood Tracker</title>
+    <style>
+        body { transition: background 0.5s; font-family: sans-serif; display: flex; height: 100vh; align-items: center; justify-content: center; margin: 0; }
+        .box { background: white; padding: 2rem; border-radius: 1rem; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.2); }
+        input { padding: 10px; width: 250px; border-radius: 5px; border: 1px solid #ccc; }
+        button { padding: 10px 20px; background: #3b82f6; color: white; border: none; border-radius: 5px; cursor: pointer; }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <h1>How are you feeling?</h1>
+        <input type="text" id="userInput" placeholder="Type something...">
+        <button onclick="checkMood()">Analyze</button>
+        <h2 id="result">---</h2>
+    </div>
+
+    <script>
+        async function checkMood() {
+            const text = document.getElementById('userInput').value;
+            // UPDATE THIS URL with your new Render URL after it deploys!
+            const response = await fetch(`https://YOUR-NEW-URL.onrender.com/analyze?text=${text}`);
+            const data = await response.json();
+            document.getElementById('result').innerText = "Mood: " + data.mood;
+            document.body.style.background = data.color;
+        }
+    </script>
+</body>
+</html>
