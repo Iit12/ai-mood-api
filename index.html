@@ -21,7 +21,8 @@
         async function checkMood() {
             const text = document.getElementById('userInput').value;
             // UPDATE THIS URL with your new Render URL after it deploys!
-            const response = await fetch(`https://YOUR-NEW-URL.onrender.com/analyze?text=${text}`);
+            // Change this line:
+            const response = await fetch(`https://ai-mood-api.onrender.com/analyze?text=${text}`);
             const data = await response.json();
             document.getElementById('result').innerText = "Mood: " + data.mood;
             document.body.style.background = data.color;
